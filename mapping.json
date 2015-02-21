@@ -1,0 +1,15 @@
+"default": {
+  "63": "i"
+}
+
+{
+  "integral": {
+    "onPressed": {
+      "UIMathML": "<mo>∫</mo>",
+      "InsertMathML": "<mo>∫</mo>"
+    },
+    "onHold": {
+
+    }
+  }
+}
