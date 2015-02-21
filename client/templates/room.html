@@ -1,0 +1,27 @@
+<template name="room">
+  <h3>{{roomName}}</h3>
+  <label> Who's in this room: </label>
+  <div id="users">
+  {{#each roomUsers}}
+  <span class="label label-default {{state}}">{{data.username}}</span>
+  {{/each}}
+</div>
+  <form data-action="create-message" class="input-group">
+  <input data-value="create-message" placeholder="New message" class="form-control"/><span class="input-group-btn">
+    <input type="submit" value="Send" class="btn btn-default"/></span>
+</form>
+<div id="messages-container" class="well">
+	{{#if messages.count}}
+		{{#if messages}}
+			{{#each messages}}
+				<div class="message">
+					<label><div class="username">{{username}}</div></label>
+					<span><div class="content">{{content}}</div></span>
+				</div>
+			{{/each}}
+		{{/if}}
+	{{else}}
+		<div class="message">No messages yet</div>
+	{{/if}}
+</div>
+</template>

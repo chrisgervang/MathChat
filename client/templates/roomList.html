@@ -1,0 +1,20 @@
+<template name="roomList">
+  <h3>Create a room</h3>
+  <form data-action="create-room" class="input-group">
+    <input data-value="create-room" type="text" placeholder="New room name" class="form-control"/><span class="input-group-btn">
+      <input type="submit" value="Create" class="btn btn-default"/></span>
+  </form>
+  <h3>Rooms</h3>
+  {{#with rooms}}
+  {{#if count}}
+  <div class="list-group">
+    {{#each rooms}}
+    <a href="/room/{{_id}}" title="name" data-id="{{_id}}" class="list-group-item">
+        {{name}}<div class="badge">{{user_count}} users</div></a>
+    {{/each}}
+  </div>
+  {{else}}
+  <span>No rooms available</span>
+  {{/if}}
+  {{/with}}
+</template>
