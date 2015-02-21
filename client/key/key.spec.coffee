@@ -3,7 +3,8 @@ describe 'Key', ->
   after -> @reset()
   before ->
 
-    data = 'foo'
+    data =
+      actual: 'w'
 
     @load 'key', size: '50, auto', align: 'center, middle', background: 0.1, args: { data:data }
 
