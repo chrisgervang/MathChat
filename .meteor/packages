@@ -3,6 +3,8 @@ autopublish
 insecure
 
 jquery
+less
 coffeescript
 respondly:util
 respondly:ctrl
+respondly:ui-harness

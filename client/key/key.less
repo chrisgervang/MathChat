@@ -1,0 +1,51 @@
+// fix this eventually
+.uih-host{
+  background: #eee;
+}
+
+.key{
+  padding-bottom: 100%;
+
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+
+  -webkit-transition: all 100ms cubic-bezier(.4,0,.2,1);
+  .-pressed&{
+    -webkit-transform: scale(1.1);
+  }
+
+
+  .letter{
+    position: absolute;
+    -webkit-font-smoothing: antialiased;
+
+
+    &.-actual{
+      font-size: 14px;
+      line-height: 12px;
+      color: #bbb;
+      top: 5px;
+      left: 5px;
+
+      -webkit-transition: all 100ms cubic-bezier(.4,0,.2,1);
+      .-pressed&{
+        color: #999;
+      }
+    }
+    &.-symbol{
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+
+      -webkit-transition: all 100ms cubic-bezier(.4,0,.2,1);
+      .-pressed&{
+        color: #333;
+      }
+    }
+  }
+}
