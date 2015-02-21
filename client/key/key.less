@@ -4,6 +4,7 @@
 }
 
 .key{
+  position: relative;
   padding-bottom: 100%;
 
   background: #fff;
@@ -12,7 +13,7 @@
 
   -webkit-transition: all 100ms cubic-bezier(.4,0,.2,1);
   .-pressed&{
-    -webkit-transform: scale(1.1);
+    background: #2196F3;
   }
 
 
@@ -30,7 +31,7 @@
 
       -webkit-transition: all 100ms cubic-bezier(.4,0,.2,1);
       .-pressed&{
-        color: #999;
+        opacity: 0;
       }
     }
     &.-symbol{
@@ -44,7 +45,7 @@
 
       -webkit-transition: all 100ms cubic-bezier(.4,0,.2,1);
       .-pressed&{
-        color: #333;
+        color: rgba(255, 255, 255, .8);
       }
     }
   }
