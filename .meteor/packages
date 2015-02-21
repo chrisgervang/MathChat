@@ -1,0 +1,8 @@
+meteor-platform
+autopublish
+insecure
+
+jquery
+coffeescript
+respondly:util
+respondly:ctrl
