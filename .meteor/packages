@@ -6,3 +6,4 @@ jquery
 coffeescript
 respondly:util
 respondly:ctrl
+mrt:mathjax
