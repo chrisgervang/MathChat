@@ -35,32 +35,4 @@ Template.room.events =
       console.log $($mathml).html()
       mathmloriginal = $($mathml).html()
       mathmlfinal = mathmloriginal.replace("<math>", "<math xmlns='http://www.w3.org/1998/Math/MathML'>")
-      Meteor.call "renderToWolfram", mathmlfinal
-  "submit [data-action=create-message]" : (event, template) ->
-    event.preventDefault()
-    $message = $("[data-value=create-message]")
-    $nummath = $(".math-text").length
-    for i in [1..$nummath] by 1
-      math = Session.get ('theMath'+i)
-      console.log math
-    string = ""
-    for $child in $(".chat-inbox").children()
-      if $($child).is("input")
-        string+="<text style='padding-left:5px; padding-right:5px;'>"
-        string+=$($child).val()
-        string+="</text>"
-        console.log $($child).val()
-      if $($child).is("span")
-        number = $($child).attr('id')
-        number = number.substring(number.indexOf('-')+1)
-        console.log number
-        string+=Session.get ('theMath'+number)
-      console.log string
-    if string is "" then return
-    # Call the Meteor.method function on the server to handle putting it into the messages collection.
-    Meteor.call "createMessage",
-      roomId : Session.get "roomId"
-      message : string
-    # Clear the form
-    $(".chat-inbox").empty()
-    $(".chat-inbox").append("<input type='text' class='common-text' id='text-1'>")
+      # Meteor.call "renderToWolfram", mathmlfinal

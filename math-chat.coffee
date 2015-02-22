@@ -114,7 +114,7 @@ if Meteor.isClient
       #render
       setTimeout (() ->
         MathJax.Hub.Queue(["Typeset",MathJax.Hub])
-        ), 10
+        ), 100
 
 
 
@@ -191,6 +191,40 @@ if Meteor.isClient
             if newMathId < 1 then newMathId = 1
             Session.set 'cursor', {createTime: Date.now(), mathId: newMathId}
             transpile()
+      if event.which == 13
+        console.log "ENTER PRESSED"
+        $message = $("[data-value=create-message]")
+        $nummath = $(".math-text").length
+        for i in [1..$nummath] by 1
+          math = Session.get ('theMath'+i)
+          console.log math
+        string = ""
+        for $child in $(".chat-inbox").children()
+          if $($child).is("input")
+            string+="<text style='padding-left:5px; padding-right:5px;'>"
+            string+=$($child).val()
+            string+="</text>"
+            console.log $($child).val()
+          if $($child).is("span")
+            number = $($child).attr('id')
+            number = number.substring(number.indexOf('-')+1)
+            console.log number
+            string+=Session.get ('theMath'+number)
+          console.log string
+        if string is "" then return
+        # Call the Meteor.method function on the server to handle putting it into the messages collection.
+        Meteor.call "createMessage",
+          roomId : Session.get "roomId"
+          message : string
+        # Clear the form
+        # $(".chat-inbox").empty()
+        # $(".chat-inbox").append("<input type='text' class='common-text' id='text-1'>")
+        $('.math-text').empty()
+        Session.set("theMath1","<mo>&Square;</mo>")
+        Session.set("theMath2","<mo>&Square;</mo>")
+        Session.set("theMath3","<mo>&Square;</mo>")
+        $('.common-text').val("")
+
       # if event.which == 20
       #   console.log "hi capslock on"
       #   console.log $(":focus").attr("id")
