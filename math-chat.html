@@ -15,6 +15,7 @@
 
 <template name="hello">
   <button>Click Me</button>
+  {{cursorScript}}
   <div class="test">
     {{#mathjax}}
     <p>
@@ -43,7 +44,7 @@
                 <mn>4</mn><mi>a</mi><mi>c</mi>
               </msqrt>
             </mrow>
-            <mrow> <mn>2</mn><mi>{{counter}}</mi> </mrow>
+            <mrow> <mn>2</mn><mi>{{variable}}{{counter}}</mi> </mrow>
           </mfrac>
         </mrow>
         <mtext>.</mtext>
