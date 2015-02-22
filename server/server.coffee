@@ -1,7 +1,5 @@
 # Meteor methods are the more secure way to handle data manipulation on the server instead of from the client.
-BrowserPolicy.framing.allowAll
-BrowserPolicy.content.allowDataUrlForAll
-BrowserPolicy.content.allowEval
+
 Accounts.onCreateUser ((options, user) ->
   user.hoverEquation = ["test"]
   user.hoverSearch = "0"
@@ -61,18 +59,20 @@ Meteor.methods
       if err
         throw err
       console.log result
+      if (result.charAt(0) == "\\" && result.charAt(1) == "(")
+        len1 = result.length
+        result = result.substring(2, len1-2)
       Meteor.users.update Meteor.user(), $set: 'hoverSearch': result
+      wolfram.query(Meteor.user().hoverSearch, callback)
       return result
-    pdc(mathml, 'html', 'latex', callSave)
     wolfram = Meteor.npmRequire('wolfram-alpha').createClient("X7GV56-WPLJWTE9EP")
     callback = Meteor.bindEnvironment (err1, result2) ->
       if (err1) 
         throw err1
       console.log result2
       Meteor.users.update Meteor.user(), $set: 'hoverEquation': result2
-
       return result2
-    wolfram.query("integrate 2x", callback)
+    pdc(mathml, 'html', 'latex', callSave)
 # Setup an onDisconnect handler on UserPresenceSettings (from dpid:user-presence package).
 # Usually we update the user count in a room when the user leaves the room manually.
 # However, we also need to handle updating the count when a user disconnects.

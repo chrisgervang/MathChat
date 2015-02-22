@@ -20,3 +20,11 @@
 #users.label.idle{
   background-color: #B8B8B8;
 }
+.playground{
+  background-color: white;
+  padding-left: 10px;
+}
+.titleseries{
+	text-decoration:underline;
+	padding-bottom: 5px;
+}

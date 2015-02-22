@@ -19,8 +19,8 @@ Template.room.helpers
     return hover
   hoverSearch : ->
     url = "http://www.wolframalpha.com/input/?"
-    query = "i="+Meteor.user().hoverSearch
-    encodeURI(url+query)
+    query = "i="+encodeURIComponent(Meteor.user().hoverSearch)
+    url+query
 
 # Template events
 Template.room.events =
