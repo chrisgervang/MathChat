@@ -2,7 +2,13 @@
   <div class="key {{ modifiers }} key-{{api.code}}">
 
     <div class="letter -actual">{{ actual }}</div>
-    <div class="letter -symbol">{{ symbol }}</div>
+    <div class="letter -symbol">
+      {{#mathjax}}
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          {{{ symbol }}}
+        </math>
+      {{/mathjax}}
+    </div>
 
   </div>
 </template>

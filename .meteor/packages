@@ -8,3 +8,5 @@ coffeescript
 respondly:util
 respondly:ctrl
 respondly:ui-harness
+
+mrt:mathjax
