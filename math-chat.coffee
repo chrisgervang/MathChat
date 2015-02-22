@@ -204,21 +204,29 @@ if Meteor.isClient
       #   else
       #    console.log "else"
 
-       hackInputMathML = Session.get("InputMathML")
-       cursor = Session.get('cursor')
-       if hackInputMathML? and cursor?
-         console.log hackInputMathML
-         $("span").removeClass('selected')
-         if hackInputMathML.func is "Integral"
-           console.log "**integral"
-         else if hackInputMathML.func is "SquareRoot"
-           console.log "**square root"
-         else if hackInputMathML.func is "blank" or hackInputMathML.func is "backspace" or hackInputMathML.func is "rightShhift" or hackInputMathML.func is "leftShift"
-           console.log "**blank"
-         else
-           console.log "**Normal Key"
-           $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
-           transpile("insert")
+
+       setTimeout (() -> #i forget what the appropriate event is for rendered
+         hackInputMathML = Session.get("InputMathML")
+         cursor = Session.get('cursor')
+         if hackInputMathML? and cursor?
+           console.log hackInputMathML
+           $("span").removeClass('selected')
+           if hackInputMathML.func is "Integral"
+             console.log "**integral"
+           else if hackInputMathML.func is "SquareRoot"
+             console.log "**square root"
+           else if hackInputMathML.func is "blank" or hackInputMathML.func is "backspace" or hackInputMathML.func is "rightShift" or hackInputMathML.func is "leftShift" or hackInputMathML.func is "leftSuper" or hackInputMathML.func is "leftCtrl" or hackInputMathML.func is "rightCtrl" or hackInputMathML.func is "rightAlt" or hackInputMathML.func is "leftAlt"
+             console.log "**blank"
+           else
+             console.log "**Normal Key"
+             str = hackInputMathML.MathML
+             str2 = str.split("<mo>")
+             str3 = str2[1].split("</mo>")
+             console.log str3
+             $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mo" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">"""+str3[0]+"""</span>""")
+             transpile("insert")
+       ), 100
+
 
 
     'keyup': (event, plate) ->

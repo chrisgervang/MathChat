@@ -1,0 +1,66 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/0.10.26/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'libxml2' ]
+2 info using npm@1.4.3
+3 info using node@v0.10.26
+4 verbose cache add [ 'libxml2', null ]
+5 verbose cache add name=undefined spec="libxml2" args=["libxml2",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'libxml2',
+6 verbose parsed url   path: 'libxml2',
+6 verbose parsed url   href: 'libxml2' }
+7 silly lockFile 08782525-libxml2 libxml2
+8 verbose lock libxml2 /Users/chrisgervang/.npm/08782525-libxml2.lock
+9 silly lockFile 08782525-libxml2 libxml2
+10 silly lockFile 08782525-libxml2 libxml2
+11 verbose addNamed [ 'libxml2', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 54e0fc5d-libxml2 libxml2@
+14 verbose lock libxml2@ /Users/chrisgervang/.npm/54e0fc5d-libxml2.lock
+15 silly addNameRange { name: 'libxml2', range: '*', hasData: false }
+16 verbose url raw libxml2
+17 verbose url resolving [ 'https://registry.npmjs.org/', './libxml2' ]
+18 verbose url resolved https://registry.npmjs.org/libxml2
+19 info trying registry request attempt 1 at 11:33:23
+20 http GET https://registry.npmjs.org/libxml2
+21 http 404 https://registry.npmjs.org/libxml2
+22 silly registry.get cb [ 404,
+22 silly registry.get   { date: 'Sun, 22 Feb 2015 19:33:23 GMT',
+22 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '52',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     age: '0',
+22 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+22 silly registry.get     'x-cache': 'MISS',
+22 silly registry.get     'x-cache-hits': '0',
+22 silly registry.get     'x-timer': 'S1424633603.314215,VS0,VE86',
+22 silly registry.get     'keep-alive': 'timeout=10, max=50',
+22 silly registry.get     connection: 'Keep-Alive' } ]
+23 silly lockFile 54e0fc5d-libxml2 libxml2@
+24 silly lockFile 54e0fc5d-libxml2 libxml2@
+25 error 404 'libxml2' is not in the npm registry.
+25 error 404 You should bug the author to publish it
+25 error 404
+25 error 404 Note that you can also install from a
+25 error 404 tarball, folder, or http url, or git url.
+26 error System Darwin 14.1.0
+27 error command "/usr/local/Cellar/node/0.10.26/bin/node" "/usr/local/bin/npm" "install" "-g" "libxml2"
+28 error cwd /Users/chrisgervang/code/MathChat
+29 error node -v v0.10.26
+30 error npm -v 1.4.3
+31 error code E404
+32 verbose exit [ 1, true ]
