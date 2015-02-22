@@ -23,6 +23,14 @@ funcSymbols =
 
 Ctrl.define
   'key':
+    ready: ->
+
+      @autorun =>
+        if @api.isPressed()
+          $(".key-#{@api.code()}").addClass('-pressed')
+        else
+          $(".key-#{@api.code()}").removeClass('-pressed')
+
     api:
       isPressed: (value) -> @prop 'isPressed', value, default:false
 
@@ -35,5 +43,5 @@ Ctrl.define
 
       modifiers: ->
         classes = ""
-        classes += "-pressed" if @api.isPressed()
+        # classes += "-pressed" if @api.isPressed()
         classes
