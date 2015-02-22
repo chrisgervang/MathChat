@@ -41,15 +41,15 @@ Ctrl.define
         if e.which is 20
           @api.keyboardMode('math')
 
-        if e.which is 16
+        if e.which is 16 and children["key-20"]?.isPressed()
           @api.keyboardMode('shift')
 
         children["key-#{e.which}"]?.isPressed(true)
 
         if @api.keyboardMode() isnt 'default'
-          
+
           # dunno why this isnt eching the text, but this should be it.
-          console.log children["key-#{e.which}"]?.context.helpers.symbol()
+          console.log children["key-#{e.which}"]?.func()
 
           e.preventDefault()
 
@@ -58,7 +58,7 @@ Ctrl.define
         if e.which is 20
           @api.keyboardMode('default')
 
-        if e.which is 16
+        if e.which is 16 and children["key-20"]?.isPressed()
           @api.keyboardMode('math')
 
         children["key-#{e.which}"]?.isPressed(false)
