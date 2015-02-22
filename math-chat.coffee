@@ -43,7 +43,7 @@ if Meteor.isClient
     $("#text-2").val(", there are two solutions to")
     $("#text-3").val("and they are")
     ), 100
-  
+
 
   transpile = ( action ) ->
     #translate from dom tree to mml
@@ -65,13 +65,13 @@ if Meteor.isClient
       if useTag
         MML = MML + "<#{tag}>"
       for child in element.children()
-        MML = buildMML MML, tag, $(child) 
+        MML = buildMML MML, tag, $(child)
       if useTag
         contents = ""
         if tag == "mi" || tag == "mo" || tag == "mn" || tag == "mtext"
           contents = element.contents().first().text()
         return MML = MML + contents + "</#{tag}>"
-      else 
+      else
         return MML
     #locate the math container to translate
     cursorId = Session.get('cursor').mathId
@@ -80,7 +80,7 @@ if Meteor.isClient
     #translate it
     newMML = buildMML "", "", $("##{equationField}-Frame")
 
-    
+
 
     #prepare retun the cursor where it was, given new ids from render
     mathContainer = $("##{equationField}-Frame").parent()
@@ -108,11 +108,11 @@ if Meteor.isClient
     Session.set("theMath#{containerId}", newMML)
 
     #set the cursor after mathjax has rendered
-    MathJax.Hub.Register.MessageHook "New Math", (message) -> 
+    MathJax.Hub.Register.MessageHook "New Math", (message) ->
       Session.set 'cursor', { createTime: Date.now(), mathId: newCursorId }
     #render
     setTimeout (() ->
-      MathJax.Hub.Queue(["Typeset",MathJax.Hub])  
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub])
       ), 10
 
   countMathElements = () ->
@@ -140,7 +140,7 @@ if Meteor.isClient
       return Session.get 'theMath2'
     theMath3: () ->
       return Session.get 'theMath3'
-      
+
   Template.hello.events
     'click button': () ->
       # increment the counter when button is clicked
@@ -149,9 +149,9 @@ if Meteor.isClient
     "click span[id*='MathJax-Span-']": (event, plate) ->
       mathId = event.currentTarget.id.slice( 13 ) * 1
       cursor = Session.get 'cursor'
-      cursorAge = 999 
-      cursorId = 0 
-      if cursor 
+      cursorAge = 999
+      cursorId = 0
+      if cursor
         cursorId = cursor.mathId
         cursorAge = Date.now() - cursor.createTime
       if ( cursorAge > 100 ) || ( cursorAge < 100 && mathId > cursorId )
@@ -188,8 +188,8 @@ if Meteor.isClient
             if newMathId < 1 then newMathId = 1
             Session.set 'cursor', {createTime: Date.now(), mathId: newMathId}
             transpile()
-      
-            
+
+
 
       switch event.which
         when 88
@@ -197,32 +197,13 @@ if Meteor.isClient
           $("span").removeClass('selected')
           $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
           transpile("insert")
-        when 187 then 
-        when 191 then 
+        when 187 then
+        when 191 then
         when 189 then
-        when 66 then 
-            
+        when 66 then
+
 
 if Meteor.isServer
   Meteor.startup( () ->
     # code to run on server at startup
   )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
