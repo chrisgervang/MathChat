@@ -1,77 +1,49 @@
-keyboard = [
-  [
-    symbol: '`'
-    id: 'key-192'
-    code: 192
-  ,
-    symbol: '1'
-    id: 'key-49'
-    code: 49
-  ,
-    symbol: '2'
-    id: 'key-50'
-    code: 50
-  ,
-    symbol: '3'
-    id: 'key-51'
-    code: 51
-  ,
-    symbol: '4'
-    id: 'key-52'
-    code: 52
-  ,
-    symbol: '5',
-    id: 'key-53'
-    code: 53
-  ,
-    symbol: '6'
-    id: 'key-54'
-    code: 54
-  ,
-    symbol: '7'
-    id: 'key-55'
-    code: 55
-  ,
-    symbol: '8'
-    id: 'key-56'
-    code: 56
-  ,
-    symbol: '9'
-    id: 'key-57'
-    code: 57
-  ,
-    symbol: '0'
-    id: 'key-48'
-    code: 48
-  ,
-    symbol: '-'
-    id: 'key-189'
-    code: 189
-  ,
-    symbol: '='
-    id: 'key-187'
-    code: 187
-  ,
-    symbol: 'delete'
-    id: 'key-8'
-    code: 8
-  ]
+keycodes = [
+  [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8]
 ]
 
+combine = (keyboards) ->
+  newKeyboard = {}
+
+  for mode, keyboard of keyboards
+    newMode = newKeyboard[mode] = []
+
+    for row, i in keyboard
+      newMode.push []
+
+      for key, j in row
+        newObj = {}
+        newObj.code = keycodes[i][j]
+        newObj.func = key
+        newObj.id = "key-#{keycodes[i][j]}"
+        newMode[i].push newObj
+
+  newKeyboard
 
 
 Ctrl.define
   'keyboard':
     ready: ->
-
       children = @children
 
       Util.keyboard.keyDown (e) =>
+
+        if e.which is 16
+          @api.keyboardMode('shift')
+
         children["key-#{e.which}"]?.isPressed(true)
-        e.preventDefault()
+        # e.preventDefault()
 
       Util.keyboard.keyUp (e) =>
+
+        if e.which is 16
+          @api.keyboardMode('math')
+
         children["key-#{e.which}"]?.isPressed(false)
 
+    api:
+      keyboardMode: (value) -> @prop 'keyboardState', value, default:'math'
+
     helpers:
-      keyboard: -> keyboard
+      combined: -> combine(@data.customKeyboard)
+      keys: -> @helpers.combined()[@api.keyboardMode()]

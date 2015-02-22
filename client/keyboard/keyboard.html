@@ -1,13 +1,13 @@
 <template name="keyboard">
   <ul class="keyboard">
 
-    {{#each keyboard }}
+    {{#each keys }}
       <li class="keyboard-row">
         <ul>
           {{#each this }}
 
             <li class="row-slot">
-              {{> ctrl type="key" id=this.id actual=this.symbol}}
+              {{> ctrl type="key" id=this.id code=this.code func=this.func}}
             </li>
 
           {{/each}}
