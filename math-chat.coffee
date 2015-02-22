@@ -115,6 +115,8 @@ if Meteor.isClient
       MathJax.Hub.Queue(["Typeset",MathJax.Hub])
       ), 10
 
+
+
   countMathElements = () ->
     #count = 0
     #$("span[id*='MathJax-Span-']").each( (i, element) ->
@@ -190,17 +192,18 @@ if Meteor.isClient
             transpile()
 
 
+      hackInputMathML = Session.get("InputMathML")
+      cursor = Session.get('cursor')
+      if hackInputMathML? and cursor?
+        console.log hackInputMathML
+        $("span").removeClass('selected')
+        if hackInputMathML.func is "Integral"
+          console.log "INTEGRAL CASE"
+        # else if
 
-      switch event.which
-        when 88
-          cursor = Session.get('cursor')
-          $("span").removeClass('selected')
-          $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
-          transpile("insert")
-        when 187 then
-        when 191 then
-        when 189 then
-        when 66 then
+        $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
+        transpile("insert")
+
 
 
 if Meteor.isServer
