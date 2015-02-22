@@ -18,18 +18,21 @@
   </form>
 
   <div id="messages-container" class="well">
+  	{{#mathjax}}
   	{{#if messages.count}}
   		{{#if messages}}
   			{{#each messages}}
   				<div class="message">
   					<label><div class="username">{{username}}</div></label>
-  					<span><div class="content">{{content}}</div></span>
+  					<span><div class="content">{{{content}}}</div></span>
+
   				</div>
   			{{/each}}
   		{{/if}}
   	{{else}}
   		<div class="message">No messages yet</div>
   	{{/if}}
+  	{{/mathjax}}
   </div>
 
   <div class="playground">
