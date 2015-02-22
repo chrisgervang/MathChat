@@ -20,8 +20,9 @@ combine = (keyboards) ->
         newObj.code = keycodes[i][j]
         newObj.func = key
         newObj.id = "key-#{keycodes[i][j]}"
-        newMode[i].push newObj
 
+        newMode[i].push newObj
+  console.log newKeyboard
   newKeyboard
 
 
@@ -38,18 +39,22 @@ Ctrl.define
 
       Util.keyboard.keyDown (e) =>
 
-        if e.which is 20
+        if e.which is 20 # caps lock
           @api.keyboardMode('math')
 
-        if e.which is 16 and children["key-20"]?.isPressed()
+        if e.which is 16 # shft
           @api.keyboardMode('shift')
 
-        children["key-#{e.which}"]?.isPressed(true)
+        # if e.which is 'alt'
 
+        children["key-#{e.which}"]?.isPressed(true)
+        console.log @api.keyboardMode()
         if @api.keyboardMode() isnt 'default'
 
           # dunno why this isnt eching the text, but this should be it.
-          console.log children["key-#{e.which}"]?.func()
+
+          console.log children["key-#{e.which}"]?.context.api.whatMathML()
+          # console.log children["key-#{e.which}"]?.context.helpers.symbol()
 
           e.preventDefault()
 
@@ -58,7 +63,7 @@ Ctrl.define
         if e.which is 20
           @api.keyboardMode('default')
 
-        if e.which is 16 and children["key-20"]?.isPressed()
+        if e.which is 16
           @api.keyboardMode('math')
 
         children["key-#{e.which}"]?.isPressed(false)
