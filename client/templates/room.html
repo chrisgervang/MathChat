@@ -24,4 +24,17 @@
 		<div class="message">No messages yet</div>
 	{{/if}}
 </div>
+<div id="messages-container" class="playground">
+	{{#each playgroundContent}}
+	{{#if subpods}}
+	{{#each subpods}}
+	<img src="{{image}}">
+	{{/each}}
+	{{/if}}
+	{{/each}}
+</div>
+{{#if hoverSearch}}
+<iframe src="{{hoverSearch}}"></iframe>
+<script type="text/javascript" id="WolframAlphaScriptd969f1354f848be1f5998515c0854117" src="//www.wolframalpha.com/widget/widget.jsp?id=d969f1354f848be1f5998515c0854117&output=iframeOpenExpand&input=2x"></script>
+{{/if}}
 </template>

@@ -7,7 +7,7 @@ Tracker.autorun ->
   if Meteor.userId()
     if Router.current() and Router.current().route._path is "/"
       Router.go "rooms"
-
+	Meteor.subscribe "currentUserData"
 # Setup user presences optional data
 UserPresence.data = ->
   roomId: Session.get 'roomId'
