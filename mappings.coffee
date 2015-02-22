@@ -256,7 +256,21 @@ optable =
               <mo>&#x308;</mo>
             </mover>
             """
-      
+    lessThanOrEqual:
+      MathML:"<mo>&leq;</mo>"
+    greaterThanOrEqual:
+      MathML:"<mo>&geq;</mo>"
+    fraction:
+      MathML:"""
+            <mfrac>
+              <mrow>
+                <mo>&Square;</mo>
+              </mrow>
+              <mrow>
+                <mo>&Square;</mo>
+              </mrow>
+            </mfrac>
+            """
 
 
 
@@ -307,16 +321,16 @@ mapping =
     "\'": "" # enter ommited
     ,
     "leftShift": "leftShift"
-    "z": "langle"
-    "x": "superScript"
-    "c": "in"
+    "z": ""
+    "x": ""
+    "c": ""
     "v": ""
     "b": ""
     "n": ""
     "m": ""
-    ",": "lessThan"
-    ".": "greaterThan"
-    "/": "divide"
+    ",": "lessThanOrEqual"
+    ".": "greaterThanOrEqual"
+    "/": "fraction"
     "rightShift": "rightShift"
     ,
     "leftCtrl": "leftCtrl"
