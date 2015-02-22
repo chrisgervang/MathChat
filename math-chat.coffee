@@ -75,7 +75,8 @@ if Meteor.isClient
         return MML
     #locate the math container to translate
     cursorId = Session.get('cursor').mathId
-    equationField = MathJax.Hub.getJaxFor("MathJax-Span-#{cursorId}").inputID
+    if MathJax.Hub.getJaxFor("MathJax-Span-#{cursorId}")?
+      equationField = MathJax.Hub.getJaxFor("MathJax-Span-#{cursorId}").inputID
     fieldId = equationField.slice( 16 ) * 1
     #translate it
     newMML = buildMML "", "", $("##{equationField}-Frame")
@@ -190,19 +191,46 @@ if Meteor.isClient
             if newMathId < 1 then newMathId = 1
             Session.set 'cursor', {createTime: Date.now(), mathId: newMathId}
             transpile()
+      if event.which == 20
+        console.log "hi capslock on"
+        console.log $(":focus").attr("id")
+        textId = $(":focus").attr("id").slice( 5 ) * 1
+        #get the next MATH field if exists, create if not
+        if $("#math-#{ textId }")[0]?
+          console.log "seleCt math field #{textId}"
+          newCursorId = $("#math-#{textId} span[id*='MathJax-Span-']").first().attr('id').slice( 13 ) * 1
+          $(":focus").blur()
+          Session.set "cursor", {createTime: Date.now(), mathId: newCursorId}
+        else
+         console.log "else"
+
+       hackInputMathML = Session.get("InputMathML")
+       cursor = Session.get('cursor')
+       if hackInputMathML? and cursor?
+         console.log hackInputMathML
+         $("span").removeClass('selected')
+         if hackInputMathML.func is "Integral"
+           console.log "INTEGRAL CASE"
+         else if hackInputMathML.func is "SquareRoot"
+           console.log "square root"
+         # else if hackInputMathML.func is "SquareRoot"
+         #   console.log "square root"
+         $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
+         transpile("insert")
 
 
-      hackInputMathML = Session.get("InputMathML")
-      cursor = Session.get('cursor')
-      if hackInputMathML? and cursor?
-        console.log hackInputMathML
-        $("span").removeClass('selected')
-        if hackInputMathML.func is "Integral"
-          console.log "INTEGRAL CASE"
-        # else if
+    'keyup': (event, plate) ->
+      if event.which == 20
+        #"capslock off"
+        cursorId = Session.get('cursor').mathId
+        equationField = MathJax.Hub.getJaxFor("MathJax-Span-#{cursorId}").inputID
+        equationFieldId = equationField.slice( 16 ) * 1
+        console.log equationFieldId
+        #get the next text field if exists, create if not
+        if $("#text-#{ equationFieldId + 1 }")[0]?
+          $("#text-#{ equationFieldId + 1 }").focus()
 
-        $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
-        transpile("insert")
+
 
 
 
