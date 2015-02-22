@@ -6,7 +6,7 @@
         <ul>
           {{#each this }}
 
-            <li class="row-slot">
+            <li class="row-slot row-slot-{{ this.code }}">
               {{> ctrl type="key" id=this.id code=this.code func=this.func}}
             </li>
 

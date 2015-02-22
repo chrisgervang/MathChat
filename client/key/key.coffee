@@ -165,8 +165,6 @@ optable =
     MathML:"<mo>&lambda;</mo>"
   pi:
     MathML:"<mo>&pi;</mo>"
-  leftShift:
-    MathML:"<mo>&#8679;</mo>"
   langle:
     MathML:"<mo>&langle;</mo>"
   superScript:
@@ -190,20 +188,8 @@ optable =
     MathML:"<mo>></mo>"
   divide:
     MathML:"<mo>&divide;</mo>"
-  rightShift:
-    MathML:"<mo>&#8679;</mo>"
-  leftCtrl:
-    MathML:"<mo>ctrl</mo>"
-  leftAlt:
-    MathML:"<mo>alt</mo>"
-  leftSuper:
-    MathML:"<mo>&#8984;</mo>"
   backspace:
     MathML:"<mo>&#9003;</mo>"
-  rightAlt:
-    MathML:"<mo>alt</mo>"
-  rightCtrl:
-    MathML:"<mo>ctrl</mo>"
   rarr:
     MathML:"<mo>&rarr;</mo>"
   larr:
