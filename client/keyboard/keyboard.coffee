@@ -38,13 +38,25 @@ Ctrl.define
 
       Util.keyboard.keyDown (e) =>
 
+        if e.which is 20
+          @api.keyboardMode('math')
+
         if e.which is 16
           @api.keyboardMode('shift')
 
         children["key-#{e.which}"]?.isPressed(true)
-        # e.preventDefault()
+
+        if @api.keyboardMode() isnt 'default'
+
+          # dunno why this isnt eching the text, but this should be it. 
+          console.log children["key-#{e.which}"]?.context.helpers.symbol()
+
+          e.preventDefault()
 
       Util.keyboard.keyUp (e) =>
+
+        if e.which is 20
+          @api.keyboardMode('default')
 
         if e.which is 16
           @api.keyboardMode('math')
@@ -52,7 +64,7 @@ Ctrl.define
         children["key-#{e.which}"]?.isPressed(false)
 
     api:
-      keyboardMode: (value) -> @prop 'keyboardState', value, default:'math'
+      keyboardMode: (value) -> @prop 'keyboardState', value, default:'default'
 
     helpers:
       combined: -> combine(@data.customKeyboard)

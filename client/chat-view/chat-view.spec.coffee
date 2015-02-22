@@ -1,4 +1,4 @@
-describe 'Keyboard', ->
+describe 'Chat View', ->
 
   after -> @reset()
   before ->
@@ -38,5 +38,4 @@ describe 'Keyboard', ->
 
         ]
 
-
-    @load 'keyboard', size: '800, auto', align: 'center, bottom', background: 0.1, args: { data:data }
+    @load 'chat-view', size: '800, auto', align: 'center, middle', background: 0.1, args: { data:data }
