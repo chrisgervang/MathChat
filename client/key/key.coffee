@@ -314,6 +314,9 @@ Ctrl.define
     api:
       isPressed: (value) -> @prop 'isPressed', value, default:false
 
+      whatMathML: ->
+        optable[@api.func()]?.MathML
+
       code: (value) -> @prop 'code', value
       func: (value) -> @prop 'func', value
 
