@@ -1,6 +1,11 @@
 @import '../core/mixins.less';
 
 
+.jumbotron{
+  padding-bottom: 400px;
+  margin-bottom: 0;
+}
+
 .chat-view{
 
 
@@ -22,5 +27,18 @@
     &:focus{
       box-shadow: 0 2px 8px rgba(0,0,0,.24);
     }
+  }
+
+
+  .keyboard{
+    position: fixed;
+    bottom: 0;
+    padding: 15px 15px 5px;
+    background: #eee;
+    width: 900px;
+    left: 50%;
+    margin-left: -450px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.24);
+    .border-radius(4px 4px 0 0)
   }
 }
