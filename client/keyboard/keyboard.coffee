@@ -47,8 +47,8 @@ Ctrl.define
         children["key-#{e.which}"]?.isPressed(true)
 
         if @api.keyboardMode() isnt 'default'
-
-          # dunno why this isnt eching the text, but this should be it. 
+          
+          # dunno why this isnt eching the text, but this should be it.
           console.log children["key-#{e.which}"]?.context.helpers.symbol()
 
           e.preventDefault()

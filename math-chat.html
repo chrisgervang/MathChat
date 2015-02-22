@@ -1,0 +1,27 @@
+<head>
+  <title>math-chat</title>
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML">
+  </script>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  {{cursorScript}}
+  <div class="test">
+    {{#mathjax}}
+      {{{theMath}}}
+    {{/mathjax}}
+  </div>
+  <p>You've pressed the button {{counter}} times.</p>
+
+
+</template>
