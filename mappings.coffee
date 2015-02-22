@@ -271,11 +271,237 @@ optable =
               </mrow>
             </mfrac>
             """
+    epsi:
+      MathML: "<mo>&epsi;</mo>"
+    eta:
+      MathML: "<mo>&eta;</mo>"
+    rho:
+      MathML: "<mo>&rho;</mo>"
+    theta:
+      MathML: "<mo>&theta;</mo>"
+    tau:
+      MathML: "<mo>&tau;</mo>"
+    upsi:
+      MathML: "<mo>&upsi;</mo>"
+    iota:
+      MathML: "<mo>&iota;</mo>"
+    omega:
+      MathML: "<mo>&omega;</mo>"
+    phiv:
+      MathML: "<mo>&phiv;</mo>"
+    psi:
+      MathML: "<mo>&psi;</mo>"
+    alpha:
+      MathML: "<mo>&alpha;</mo>"
+    sigma:
+      MathML: "<mo>&sigma;</mo>"
+    delta:
+      MathML: "<mo>&delta;</mo>"
+    gamma:
+      MathML: "<mo>&gamma;</mo>"
+    kappa:
+      MathML: "<mo>&kappa;</mo>"
+    lambda:
+      MathML: "<mo>&lambda;</mo>"
+    pi:
+      MathML: "<mo>&pi;</mo>"
+    zeta:
+      MathML: "<mo>&zeta;</mo>"
+    xi:
+      MathML: "<mo>&xi;</mo>"
+    chi:
+      MathML: "<mo>&chi;</mo>"
+    beta:
+      MathML: "<mo>&beta;</mo>"
+    nu:
+      MathML: "<mo>&nu;</mo>"
+    mu:
+      MathML: "<mo>&mu;</mo>"
+    Epsi:
+      MathML: "<mo>E</mo>"
+    Eta:
+      MathML: "<mo>H</mo>"
+    Rho:
+      MathML: "<mo>P</mo>"
+    Theta:
+      MathML: "<mo>&Theta;</mo>"
+    Tau:
+      MathML: "<mo>T</mo>"
+    Upsi:
+      MathML: "<mo>&Upsi;</mo>"
+    Iota:
+      MathML: "<mo>I</mo>"
+    Omega:
+      MathML: "<mo>&Omega;</mo>"
+    Phiv:
+      MathML: "<mo>&Phiv;</mo>"
+    Psi:
+      MathML: "<mo>&Psi;</mo>"
+    Alpha:
+      MathML: "<mo>A</mo>"
+    Sigma:
+      MathML: "<mo>&Sigma;</mo>"
+    Delta:
+      MathML: "<mo>&Delta;</mo>"
+    Gamma:
+      MathML: "<mo>&Gamma;</mo>"
+    Kappa:
+      MathML: "<mo>&Kappa;</mo>"
+    Lambda:
+      MathML: "<mo>&Lambda;</mo>"
+    Pi:
+      MathML: "<mo>&Pi;</mo>"
+    Zeta:
+      MathML: "<mo>Z</mo>"
+    Xi:
+      MathML: "<mo>&Xi;</mo>"
+    Chi:
+      MathML: "<mo>X</mo>"
+    Beta:
+      MathML: "<mo>B</mo>"
+    Nu:
+      MathML: "<mo>N</mo>"
+    Mu:
+      MathML: "<mo>M</mo>"
 
 
 
 
 mapping =
+  "ctrlAltShiftMath":
+    "`": ""
+    "1": ""
+    "2": ""
+    "3": ""
+    "4": ""
+    "5": ""
+    "6": ""
+    "7": ""
+    "8": ""
+    "9": ""
+    "0": ""
+    "-": ""
+    "=": "" # backspace omitted
+    "backspace": "backspace"
+    ,
+    "tab": ""
+    "q": ""
+    "w": "Epsi"
+    "e": "Eta"
+    "r": "Rho"
+    "t": "Theta"
+    "y": "Tau"
+    "u": "Upsi"
+    "i": "Iota"
+    "o": "Omega"
+    "p": "Phiv"
+    "[": "Psi"
+    "]": ""
+    "\\": ""
+    ,
+    "capsLock": "toggleKeyboards"
+    "a": "Alpha"
+    "s": "Sigma"
+    "d": "Delta"
+    "f": ""
+    "g": "Gamma"
+    "h": ""
+    "j": ""
+    "k": "Kappa"
+    "l": "Lambda"
+    ";": "Pi"
+    "\'": "" # enter ommited
+    ,
+    "leftShift": "leftShift"
+    "z": "Zeta"
+    "x": "Xi"
+    "c": "Chi"
+    "v": ""
+    "b": "Beta"
+    "n": "Nu"
+    "m": "Mu"
+    ",": ""
+    ".": ""
+    "/": ""
+    "rightShift": "rightShift"
+    ,
+    "leftCtrl": "leftCtrl"
+    "leftSuper": "leftSuper"
+    "leftAlt": "leftAlt"
+    "space": ""
+    "rightAlt": "rightAlt"
+    "rightSuper": "rightSuper"
+    "leftArrow": "larr"
+    "upArrow": "uarr"
+    "downArrow": "darr"
+    "rightArrow": "rarr"
+  "ctrlAltMath":
+    "`": ""
+    "1": ""
+    "2": ""
+    "3": ""
+    "4": ""
+    "5": ""
+    "6": ""
+    "7": ""
+    "8": ""
+    "9": ""
+    "0": ""
+    "-": ""
+    "=": "" # backspace omitted
+    "backspace": "backspace"
+    ,
+    "tab": ""
+    "q": ""
+    "w": "epsi"
+    "e": "eta"
+    "r": "rho"
+    "t": "theta"
+    "y": "tau"
+    "u": "upsi"
+    "i": "iota"
+    "o": "omega"
+    "p": "phiv"
+    "[": "psi"
+    "]": ""
+    "\\": ""
+    ,
+    "capsLock": "toggleKeyboards"
+    "a": "alpha"
+    "s": "sigma"
+    "d": "delta"
+    "f": ""
+    "g": "gamma"
+    "h": ""
+    "j": ""
+    "k": "kappa"
+    "l": "lambda"
+    ";": "pi"
+    "\'": "" # enter ommited
+    ,
+    "leftShift": "leftShift"
+    "z": "zeta"
+    "x": "xi"
+    "c": "chi"
+    "v": ""
+    "b": "beta"
+    "n": "nu"
+    "m": "mu"
+    ",": ""
+    ".": ""
+    "/": ""
+    "rightShift": "rightShift"
+    ,
+    "leftCtrl": "leftCtrl"
+    "leftSuper": "leftSuper"
+    "leftAlt": "leftAlt"
+    "space": ""
+    "rightAlt": "rightAlt"
+    "rightSuper": "rightSuper"
+    "leftArrow": "larr"
+    "upArrow": "uarr"
+    "downArrow": "darr"
+    "rightArrow": "rarr"
   "shiftMath":
     "`": "approx"
     "1": "Not"
