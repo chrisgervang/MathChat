@@ -3,3 +3,8 @@
 .selected {
   background-color: cyan;
 }
+
+.common-text {
+  border: none;
+  border-color: transparent;
+}

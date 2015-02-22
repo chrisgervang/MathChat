@@ -38,6 +38,12 @@ if Meteor.isClient
         </mrow>
       </math>
       """)
+  setTimeout (() -> #i forget what the appropriate event is for rendered
+    $("#text-1").val("When")
+    $("#text-2").val(", there are two solutions to")
+    $("#text-3").val("and they are")
+    ), 100
+  
 
   transpile = ( action ) ->
     #translate from dom tree to mml
@@ -152,15 +158,18 @@ if Meteor.isClient
         Session.set 'cursor', { createTime: Date.now(), mathId: mathId }
       console.log event.currentTarget
       console.log Session.get 'cursor'
+    'focus': (event, plate) ->
+      $("span").removeClass('selected')
 
   Template.body.events
     'keydown': (event, plate) ->
       console.log "howdy, key #{event.which} pressed"
-      if event.which == 8
+      console.log $(":focus")
+      if event.which == 8 && !($(":focus").length > 0)
         event.preventDefault()
       if 37 <= event.which <= 40 || event.which == 8
         cursor = Session.get('cursor')
-        if cursor
+        if cursor && !($(":focus").length > 0)
           if event.which == 37
             event.preventDefault()
             newMathId = cursor.mathId - 1
@@ -179,6 +188,7 @@ if Meteor.isClient
             if newMathId < 1 then newMathId = 1
             Session.set 'cursor', {createTime: Date.now(), mathId: newMathId}
             transpile()
+      
             
 
       switch event.which
