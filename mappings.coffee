@@ -46,7 +46,9 @@ optable =
   SquareRoot:
     MathML:"""
           <msqrt>
-            <mo>&square;</mo>
+            <mrow>
+              <mo>&square;</mo>
+            </mrow>
           </msqrt>
           """
   PlusMinus:
@@ -168,14 +170,165 @@ optable =
       MathML:"<mo>&uarr;</mo>"
     darr:
       MathML:"<mo>&darr;</mo>"
-
-
-
+    Not:
+      MathML:"<mo>!</mo>"
+    approx:
+      MathML:"<mo>&approx;</mo>"
+    TildeFullEqual:
+      MathML:"<mo>&TildeFullEqual;</mo>"
+    nparallel:
+      MathML:"<mo>&nparallel;</mo>"
+    AnyRoot:
+      MathML:"""
+            <mroot>
+              <mrow>
+                <mo>&square;</mo>
+              </mrow>
+              <mrow>
+                <mo>&EmptyVerySmallSquare;</mo>
+              </mrow>
+            </mroot>
+            """
+    openParen:
+      MathML:"<mo>(</mo>"
+    closeParen:
+      MathML:"<mo>)</mo>"
+    plus:
+      MathML:"<mo>+</mo>"
+    ln:
+      MathML:"<mo>ln</mo>"
+    emptyset:
+      MathML:"<mo>&emptyset;</mo>"
+    eulersConst:
+      MathML:"<mo><mi>e</mi></mo>"
+    Intersection:
+      MathML:"""
+            <munderover>
+              <mo>&Intersection;</mo>
+                <mrow>
+                  <mo>&EmptyVerySmallSquare;</mo>
+                </mrow>
+                <mrow>
+                  <mo>&EmptyVerySmallSquare;</mo>
+                </mrow>
+            </munderover>
+            """
+    DoubleIntegral:
+      MathML:"""
+            <msubsup>
+              <mo>&Integral;&Integral;</mo>
+              <mrow>
+                <mo>&EmptyVerySmallSquare;</mo>
+              </mrow>
+              <mrow>
+                <mo>&EmptyVerySmallSquare;</mo>
+              </mrow>
+            </msubsup>
+            """
+    dtheta:
+      MathML:"<mo>d<mi>&theta;</mi></mo>"
+    CircleTimes:
+      MathML:"<mo>&CircleTimes;</mo>"
+    CirclePlus:
+      MathML:"<mo>&CirclePlus;</mo>"
+    leftCurly:
+      MathML:"<mo>{</mo>"
+    rightCurly:
+      MathML:"<mo>}</mo>"
+    logicalOr:
+      MathML:"<mo>&or;</mo>"
+    PartialD:
+      MathML:"<mo>&PartialD;</mo>"
+    Infinity:
+      MathML:"<mo>&#x221E;</mo>"
+    csc:
+      MathML:"<mo>csc</mo>"
+    sec:
+      MathML:"<mo>sec</mo>"
+    cot:
+      MathML:"<mo>cot</mo>"
+    range:
+      MathML:"""
+            <mover>
+              <mrow>
+                <mo>&Square;</mo>
+              </mrow>
+              <mo>&#x308;</mo>
+            </mover>
+            """
+      
 
 
 
 
 mapping =
+  "shiftMath":
+    "`": "approx"
+    "1": "Not"
+    "2": "TildeFullEqual"
+    "3": "nparallel"
+    "4": ""
+    "5": ""
+    "6": "AnyRoot"
+    "7": ""
+    "8": ""
+    "9": "openParen"
+    "0": "closeParen"
+    "-": ""
+    "=": "plus" # backspace omitted
+    "backspace": "backspace"
+    ,
+    "tab": ""
+    "q": "emptyset"
+    "w": "ln"
+    "e": "eulersConst"
+    "r": ""
+    "t": ""
+    "y": ""
+    "u": "Intersection"
+    "i": "DoubleIntegral"
+    "o": "dtheta"
+    "p": "CircleTimes"
+    "[": "leftCurly"
+    "]": "rightCurly"
+    "\\": "logicalOr"
+    ,
+    "capsLock": "toggleKeyboards"
+    "a": ""
+    "s": "CirclePlus"
+    "d": "PartialD"
+    "f": "Infinity"
+    "g": ""
+    "h": "csc"
+    "j": "sec"
+    "k": "cot"
+    "l": ""
+    ";": "range"
+    "\'": "" # enter ommited
+    ,
+    "leftShift": "leftShift"
+    "z": "langle"
+    "x": "superScript"
+    "c": "in"
+    "v": ""
+    "b": ""
+    "n": ""
+    "m": ""
+    ",": "lessThan"
+    ".": "greaterThan"
+    "/": "divide"
+    "rightShift": "rightShift"
+    ,
+    "leftCtrl": "leftCtrl"
+    "leftSuper": "leftSuper"
+    "leftAlt": "leftAlt"
+    "space": ""
+    "rightAlt": "rightAlt"
+    "rightSuper": "rightSuper"
+    "leftArrow": "larr"
+    "upArrow": "uarr"
+    "downArrow": "darr"
+    "rightArrow": "rarr"
   "defaultMath":
     "`": "Tilde"
     "1": "NotEqual"
@@ -189,7 +342,7 @@ mapping =
     "9": ""
     "0": ""
     "-": "minus"
-    "=": "=" # backspace omitted
+    "=": "equals" # backspace omitted
     "backspace": "backspace"
     ,
     "tab": ""
