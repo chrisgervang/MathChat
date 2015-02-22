@@ -1,0 +1,13 @@
+<template name="layout">
+  <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    {{>loginButtons}}
+  </div>
+  {{#if hasRoomId}}
+  <a href="/rooms">Leave room</a>
+  {{/if}}
+  <div class="jumbotron">
+    <div class="container">
+      {{> yield}}
+    </div>
+  </div>
+</template>
