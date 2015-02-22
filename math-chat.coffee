@@ -39,7 +39,7 @@ if Meteor.isClient
       </math>
       """)
 
-  transpile = () ->
+  transpile = ( action ) ->
     #translate from dom tree to mml
     buildMML = (MML, previousTag, element) ->
       mathClass = element.attr 'class'
@@ -73,21 +73,14 @@ if Meteor.isClient
     fieldId = equationField.slice( 16 ) * 1
     #translate it
     newMML = buildMML "", "", $("##{equationField}-Frame")
-    #empty the math container
+
+    
+
+    #prepare retun the cursor where it was, given new ids from render
     mathContainer = $("##{equationField}-Frame").parent()
-    mathContainer.empty()
     containerId = mathContainer.attr('id').slice( 5 ) *1
-    #set result as new MML for container, triggeringa  render
-    Session.set("theMath#{containerId}", newMML)
-
-
-    #retun the cursor where it was, given new ids from render
-    #old id
-    #- lowest number in container
-    #+ highest number in document
-
     oldId = Session.get('cursor').mathId
-    lowestIdinField = 0
+    lowestIdinField = 9999
     $("#math-#{containerId}").find("span[id*='MathJax-Span-']").each( (i, element) ->
       if $(element).attr('id').slice( 13 ) * 1 < lowestIdinField then lowestIdinField = $(element).attr('id').slice( 13 ) * 1
     )
@@ -95,18 +88,22 @@ if Meteor.isClient
     $("span[id*='MathJax-Span-']").each( (i, element) ->
       if $(element).attr('id').slice( 13 ) * 1 > highestIdinDoc then highestIdinDoc = $(element).attr('id').slice( 13 ) * 1
     )
-
     console.log "old id = #{oldId}"
     console.log "lowest in field = #{lowestIdinField}"
     console.log "highestIdinDoc = #{highestIdinDoc}"
+    newCursorId = oldId - lowestIdinField + highestIdinDoc + 1
+    if action == "insert"
+      newCursorId++
+    #else action == "delete"
 
-    #console.log "the number of math elements is #{countMathElements()}"
+    #empty the math container
+    mathContainer.empty()
+    #set result as new MML for container, triggeringa  render
+    Session.set("theMath#{containerId}", newMML)
 
-    #oldCursorId = Session.get('cursor').mathId * 1
-    #elementCount = Session.get('elementCount') * 1
-    #console.log "oldCursorId = #{oldCursorId} and elementCount = #{elementCount}; combined they add to #{oldCursorId + elementCount}"
-    #MathJax.Hub.Register.MessageHook "New Math", (message) -> 
-    #  Session.set 'cursor', { createTime: Date.now(), mathId: oldCursorId + elementCount + 2}
+    #set the cursor after mathjax has rendered
+    MathJax.Hub.Register.MessageHook "New Math", (message) -> 
+      Session.set 'cursor', { createTime: Date.now(), mathId: newCursorId }
     #render
     setTimeout (() ->
       MathJax.Hub.Queue(["Typeset",MathJax.Hub])  
@@ -188,8 +185,8 @@ if Meteor.isClient
         when 88
           cursor = Session.get('cursor')
           $("span").removeClass('selected')
-          $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-0" style="font-family: MathJax_Math-italic;">x</span>""")
-          transpile()
+          $("#MathJax-Span-#{cursor.mathId}").after("""<span class="mi" id="MathJax-Span-#{cursor.mathId + 0.5}" style="font-family: MathJax_Math-italic;">x</span>""")
+          transpile("insert")
         when 187 then 
         when 191 then 
         when 189 then
