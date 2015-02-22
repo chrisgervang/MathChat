@@ -8,31 +8,3 @@
 <body>
   {{> ctrl type="keyboard" data=data}}
 </body>
-
-<template name="hello">
-  <button>Click Me</button>
-  {{cursorScript}}
-  <div class="test">
-    <input type="text" class="common-text" id="text-1">
-    <span class="math-text" id="math-1">
-      {{#mathjax}}
-        {{{theMath1}}}
-      {{/mathjax}}
-    </span>
-    <input type="text" class="common-text" id="text-2">
-    <span class="math-text" id="math-2">
-      {{#mathjax}}
-        {{{theMath2}}}
-      {{/mathjax}}
-    </span>
-    <input type="text" class="common-text" id="text-3">
-    <span class="math-text" id="math-3">
-      {{#mathjax}}
-        {{{theMath3}}}
-      {{/mathjax}}
-    </span>
-  </div>
-  <p>You've pressed the button {{counter}} times.</p>
-
-
-</template>

@@ -1,7 +1,7 @@
 <template name="chat-view">
   <div class="chat-view">
     <div class="chat-inbox">
-      {{>hello}}
+      {{> hello}}
     </div>
     <!-- <input type="text" class="chat-inbox"> -->
 
@@ -12,24 +12,22 @@
 
 <template name="hello">
   {{cursorScript}}
-  <div class="test">
-    <span class="common-text">When</span>
-    <span class="math-text" id="math-1">
-      {{#mathjax}}
-        {{{theMath1}}}
-      {{/mathjax}}
-    </span>
-    <span class="common-text">, there are two solutions to</span>
-    <span class="math-text" id="math-2">
-      {{#mathjax}}
-        {{{theMath2}}}
-      {{/mathjax}}
-    </span>
-    <span class="common-text">and they are</span>
-    <span class="math-text" id="math-3">
-      {{#mathjax}}
-        {{{theMath3}}}
-      {{/mathjax}}
-    </span>
-  </div>
+  <input type="text" class="common-text" id="text-1">
+  <span class="math-text" id="math-1">
+    {{#mathjax}}
+      {{{theMath1}}}
+    {{/mathjax}}
+  </span>
+  <input type="text" class="common-text" id="text-2">
+  <span class="math-text" id="math-2">
+    {{#mathjax}}
+      {{{theMath2}}}
+    {{/mathjax}}
+  </span>
+  <input type="text" class="common-text" id="text-3">
+  <span class="math-text" id="math-3">
+    {{#mathjax}}
+      {{{theMath3}}}
+    {{/mathjax}}
+  </span>
 </template>
