@@ -17,9 +17,24 @@
   <button>Click Me</button>
   {{cursorScript}}
   <div class="test">
-    {{#mathjax}}
-      {{{theMath}}}
-    {{/mathjax}}
+    <span class="common-text">When</span>
+    <span class="math-text" id="math-1">
+      {{#mathjax}}
+        {{{theMath1}}}
+      {{/mathjax}}
+    </span>
+    <span class="common-text">, there are two solutions to</span>
+    <span class="math-text" id="math-2">
+      {{#mathjax}}
+        {{{theMath2}}}
+      {{/mathjax}}
+    </span>
+    <span class="common-text">and they are</span>
+    <span class="math-text" id="math-3">
+      {{#mathjax}}
+        {{{theMath3}}}
+      {{/mathjax}}
+    </span>
   </div>
   <p>You've pressed the button {{counter}} times.</p>
 
