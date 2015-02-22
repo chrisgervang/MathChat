@@ -10,6 +10,10 @@
   margin-top: 15px;
 }
 
+.container {
+  padding-right: 220px;
+}
+
 #users{
   margin-top: -7px;
   margin-bottom: 10px;
@@ -21,6 +25,11 @@
   background-color: #B8B8B8;
 }
 .playground{
+  position: fixed;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  width: 200px;
   background-color: white;
   padding-left: 10px;
 }

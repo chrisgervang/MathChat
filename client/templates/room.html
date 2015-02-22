@@ -8,10 +8,11 @@
     {{/each}}
   </div>
 
-  {{> ctrl type='chat-view' }}
+
 
   <form data-action="create-message" class="input-group">
-    <input data-value="create-message" placeholder="New message" class="form-control"/>
+    <!-- <input data-value="create-message" placeholder="New message" class="form-control"/> -->
+    {{> ctrl type='chat-view' }}
     <span class="input-group-btn">
       <input type="submit" value="Send" class="btn btn-default"/>
     </span>
