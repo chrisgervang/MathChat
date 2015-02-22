@@ -26,6 +26,16 @@ Template.room.helpers
 Template.room.events =
   # Create a message on form submit.
   # Note: It is recommended to use 'submit' instead of 'click' since it will handle all submit cases.
+  "click span[id*='MathJax-Element-']": (event, plate) ->
+      console.log event.currentTarget
+      $elem = $(event.currentTarget).attr('id')
+      $elem = $elem.replace("-Frame", "")
+      $mathml =  $("[id='"+$elem+"']")
+      console.log $mathml
+      console.log $($mathml).html()
+      mathmloriginal = $($mathml).html()
+      mathmlfinal = mathmloriginal.replace("<math>", "<math xmlns='http://www.w3.org/1998/Math/MathML'>")
+      Meteor.call "renderToWolfram", mathmlfinal
   "submit [data-action=create-message]" : (event, template) ->
     event.preventDefault()
     $message = $("[data-value=create-message]")
@@ -46,7 +56,6 @@ Template.room.events =
         console.log number
         string+=Session.get ('theMath'+number)
       console.log string
-
     if string is "" then return
     # Call the Meteor.method function on the server to handle putting it into the messages collection.
     Meteor.call "createMessage",
@@ -55,16 +64,3 @@ Template.room.events =
     # Clear the form
     $(".chat-inbox").empty()
     $(".chat-inbox").append("<input type='text' class='common-text' id='text-1'>")
-#     Meteor.call "renderToWolfram", "<math xmlns='http://www.w3.org/1998/Math/MathML'>
-#   <mrow>
-#     <mi>cos</mi>
-#     <mo>&#x2061;</mo>
-#     <mrow>
-#       <mo>(</mo>
-#       <mi>&#x3B8;</mi>
-#       <mo>+</mo>
-#       <mi>&#x3C6;</mi>
-#       <mo>)</mo>
-#     </mrow>
-#   </mrow>
-# </math>"

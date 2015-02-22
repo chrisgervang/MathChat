@@ -57,7 +57,7 @@ Meteor.methods
     console.log mathml
     callSave = Meteor.bindEnvironment (err, result) ->
       if err
-        throw err
+        console.log err
       console.log result
       if (result.charAt(0) == "\\" && result.charAt(1) == "(")
         len1 = result.length
@@ -68,7 +68,7 @@ Meteor.methods
     wolfram = Meteor.npmRequire('wolfram-alpha').createClient("X7GV56-WPLJWTE9EP")
     callback = Meteor.bindEnvironment (err1, result2) ->
       if (err1) 
-        throw err1
+        console.log err1
       console.log result2
       Meteor.users.update Meteor.user(), $set: 'hoverEquation': result2
       return result2
