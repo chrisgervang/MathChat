@@ -25,6 +25,7 @@
 	{{/if}}
 </div>
 <div class="playground">
+  {{#if playgroundContent}}
 	{{#each playgroundContent}}
 	{{#if subpods}}
 	<div>{{#if title}}<span class="titleseries">{{title}}</span>{{/if}}<br/>
@@ -36,6 +37,7 @@
 	{{/if}}
 
 	{{/each}}
+  {{/if}}
 {{#if hoverSearch}}
 <br/>
 <a href="{{hoverSearch}}">{{hoverSearch}}</a>
